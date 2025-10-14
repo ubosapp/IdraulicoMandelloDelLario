@@ -35,7 +35,8 @@ export default async function handler(
     const { data, error } = await resend.emails.send({
       from: `Idraulico Mandello <${FROM_EMAIL}>`,
       to: [TO_EMAIL],
-      reply_to: email, // Permette di rispondere direttamente all'utente
+      // Fix: Corrected typo from `reply_to` to `replyTo` to match the Resend SDK type definition.
+      replyTo: email, // Permette di rispondere direttamente all'utente
       subject: `Nuovo messaggio da ${name} da idraulicomandellodelario.site`,
       html: `
         <div style="font-family: sans-serif; line-height: 1.6;">

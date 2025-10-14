@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "esbuild index.tsx --bundle --outfile=index.js --jsx=automatic --minify"
+    "build": "mkdir -p dist && cp index.html dist/ && cp index.css dist/ && esbuild index.tsx --bundle --outfile=dist/index.js --jsx=automatic --minify"
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",

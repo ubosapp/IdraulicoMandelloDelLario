@@ -26,6 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -139,19 +140,19 @@
       }
     }
   </script>
-  <script type="importmap">
-    {
-      "imports": {
-        "@google/genai": "https://esm.sh/@google/genai@^0.7.0",
-        "react": "https://esm.sh/react@^19.0.0",
-        "react/": "https://esm.sh/react@^19.0.0/",
-        "react-dom/": "https://esm.sh/react-dom@^19.0.0/",
-        "@emailjs/browser": "https://esm.sh/@emailjs/browser@4.3.3"
-      }
-    }
-  </script>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@emailjs/browser": "https://aistudiocdn.com/@emailjs/browser@^4.4.1"
+  }
+}
+</script>
 </head>
 <body>
   <div id="root"></div>
+  <script type="module" src="index.js" defer></script>
 </body>
 </html>

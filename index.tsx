@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import emailjs from '@emailjs/browser';
@@ -460,7 +461,8 @@ const Contact = ({ prefilledMessage, onPrivacyClick }) => {
           </div>
           <div className="form-group">
             <label htmlFor="message">Messaggio</label>
-            <textarea id="message" name="message" rows="6" placeholder="Descrivi il tuo problema..." required value={formState.message} onChange={handleInputChange}></textarea>
+            {/* Fix: The rows attribute for a textarea in React expects a number, not a string. Changed rows="6" to rows={6}. */}
+            <textarea id="message" name="message" rows={6} placeholder="Descrivi il tuo problema..." required value={formState.message} onChange={handleInputChange}></textarea>
           </div>
           <div className="form-group-consent">
             <input type="checkbox" id="privacy-consent" name="privacy-consent" checked={consent} onChange={() => setConsent(!consent)} required />

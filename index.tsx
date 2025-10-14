@@ -422,12 +422,22 @@ const Contact = ({ prefilledMessage, onPrivacyClick }) => {
             }),
         });
         
-        const data = await response.json();
-
         if (!response.ok) {
-            throw new Error(data.error || 'Something went wrong');
+            // Try to get error details from the body, but handle cases where it's not JSON
+            const contentType = response.headers.get("content-type");
+            let errorMessage = 'Si è verificato un errore nel server.';
+            if (contentType && contentType.indexOf("application/json") !== -1) {
+                const errorData = await response.json();
+                errorMessage = errorData.error || errorMessage;
+            } else {
+                const errorText = await response.text();
+                console.error("Server returned non-JSON error:", errorText);
+                errorMessage = 'Il server ha risposto con un errore. Controlla i log della funzione per i dettagli.';
+            }
+            throw new Error(errorMessage);
         }
 
+        const data = await response.json();
         console.log('SUCCESS!', data.message);
         setStatus('success');
         setFormState({ name: '', email: '', message: '' });

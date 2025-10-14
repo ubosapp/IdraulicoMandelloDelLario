@@ -4,5 +4,5 @@
     "esModuleInterop": true,
     "strict": true
   },
-  "include": ["index.tsx"]
+  "include": ["index.tsx", "api/**/*.ts"]
 }

@@ -1,7 +1,5 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import emailjs from '@emailjs/browser';
 
 // --- Fix: Define a type for blog posts for type safety ---
 type BlogPostType = {
@@ -380,12 +378,6 @@ const BlogPostPage: React.FC<{ post: BlogPostType; onGoHome: () => void }> = ({ 
 );
 
 const Contact = ({ prefilledMessage, onPrivacyClick }) => {
-  // --- INSERISCI QUI LE TUE CHIAVI EMAILJS ---
-  const SERVICE_ID = 'SERVICE_ID_DA_SOSTITUIRE';
-  const TEMPLATE_ID = 'TEMPLATE_ID_DA_SOSTITUIRE';
-  const PUBLIC_KEY = 'PUBLIC_KEY_DA_SOSTITUIRE';
-  // -----------------------------------------
-
   const [formState, setFormState] = React.useState({
     name: '',
     email: '',
@@ -408,36 +400,42 @@ const Contact = ({ prefilledMessage, onPrivacyClick }) => {
     }));
   };
   
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!consent) {
       alert('Per favore, accetta la nostra politica sulla privacy per continuare.');
       return;
     }
 
-    if (SERVICE_ID === 'SERVICE_ID_DA_SOSTITUIRE' || TEMPLATE_ID === 'TEMPLATE_ID_DA_SOSTITUIRE' || PUBLIC_KEY === 'PUBLIC_KEY_DA_SOSTITUIRE') {
-        alert('Le chiavi EmailJS non sono state configurate. Il modulo non può inviare email.');
-        return;
-    }
-
     setStatus('sending');
 
-    const templateParams = {
-        from_name: formState.name,
-        from_email: formState.email,
-        message: formState.message,
-    };
+    try {
+        const response = await fetch('/api/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: formState.name,
+                email: formState.email,
+                message: formState.message,
+            }),
+        });
+        
+        const data = await response.json();
 
-    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
-      .then((response) => {
-         console.log('SUCCESS!', response.status, response.text);
-         setStatus('success');
-         setFormState({ name: '', email: '', message: '' });
-         setConsent(false);
-      }, (err) => {
-         console.log('FAILED...', err);
-         setStatus('error');
-      });
+        if (!response.ok) {
+            throw new Error(data.error || 'Something went wrong');
+        }
+
+        console.log('SUCCESS!', data.message);
+        setStatus('success');
+        setFormState({ name: '', email: '', message: '' });
+        setConsent(false);
+    } catch (err) {
+        console.log('FAILED...', err);
+        setStatus('error');
+    }
   };
 
   return (
@@ -461,7 +459,6 @@ const Contact = ({ prefilledMessage, onPrivacyClick }) => {
           </div>
           <div className="form-group">
             <label htmlFor="message">Messaggio</label>
-            {/* Fix: The rows attribute for a textarea in React expects a number, not a string. Changed rows="6" to rows={6}. */}
             <textarea id="message" name="message" rows={6} placeholder="Descrivi il tuo problema..." required value={formState.message} onChange={handleInputChange}></textarea>
           </div>
           <div className="form-group-consent">

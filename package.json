@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "mkdir -p dist && cp index.html dist/ && cp index.css dist/ && esbuild index.tsx --bundle --outfile=dist/index.js --jsx=automatic --minify"
+    "build": "mkdir -p dist && cp index.html dist/ && cp index.css dist/ && cp robots.txt dist/ && cp sitemap.xml dist/ && esbuild index.tsx --bundle --outfile=dist/index.js --jsx=automatic --minify"
   },
   "dependencies": {
     "react": "^18.3.1",

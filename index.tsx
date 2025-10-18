@@ -410,7 +410,7 @@ const Contact = ({ prefilledMessage, onPrivacyClick }) => {
     setStatus('sending');
 
     try {
-      const response = await fetch('https://n8n-1-wj5q.onrender.com/webhook-test/mycontact', {
+      const response = await fetch('https://n8n-1-wj5q.onrender.com/webhook/mycontact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

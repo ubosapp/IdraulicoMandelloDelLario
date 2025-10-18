@@ -516,7 +516,7 @@ const Footer = ({ onNavClick, onSitiAmiciClick }) => (
         <div className="footer-column">
           <h3>Contatti</h3>
           <p><a href="tel:+391234567890">+391234567890</a></p>
-          <p><a href="mailto:info@idraulicomandello.it">info@idraulicomandello.it</a></p>
+          <p>Email: demo@idraulicomandellario.it (demo)</p>
           <p>Via Fittizia 123, Mandello del Lario (LC)</p>
         </div>
         <div className="footer-column">

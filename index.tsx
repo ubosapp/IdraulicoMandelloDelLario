@@ -256,6 +256,16 @@ const About = () => (
           </p>
         </div>
       </div>
+      <div className="video-container">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/FjIu-p35d10"
+          title="Video presentazione Idraulico Mandello del Lario"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          loading="lazy"
+        ></iframe>
+      </div>
     </div>
   </section>
 );

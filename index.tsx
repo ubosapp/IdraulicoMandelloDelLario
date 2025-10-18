@@ -23,7 +23,7 @@ const blogPosts: BlogPostType[] = [
   {
     slug: '5-consigli-manutenzione-caldaia-inverno',
     title: '5 Consigli per la Manutenzione della Caldaia Prima dell\'Inverno',
-    image: 'https://images.unsplash.com/photo-1582599298945-c8cec7f71151?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://raw.githubusercontent.com/ubosapp/IdraulicoMandelloDelLario/main/imgs/Primo%20piano%20di%20una%20caldaia%20a%20gas%20in%20un%20locale%20tecnico.png',
     alt: 'Primo piano di una caldaia a gas in un locale tecnico.',
     excerpt: 'L\'inverno si avvicina e una caldaia efficiente è fondamentale. Scopri i nostri consigli professionali per non avere brutte sorprese. Un buon idraulico a Mandello del Lario può fare la differenza...',
     content: `
@@ -48,7 +48,7 @@ const blogPosts: BlogPostType[] = [
   {
     slug: 'come-riconoscere-perdita-acqua-occulta',
     title: 'Come Riconoscere e Affrontare una Perdita d\'Acqua Occulta',
-    image: 'https://images.unsplash.com/photo-1586927904837-5433a7805b59?q=80&w=2072&auto=format&fit=crop',
+    image: 'https://raw.githubusercontent.com/ubosapp/IdraulicoMandelloDelLario/main/imgs/Macchia%20d\'Umidit%C3%A0%20sul%20Muro.png',
     alt: 'Macchia di umidità su un muro, segno di una perdita d\'acqua.',
     excerpt: 'Una bolletta dell\'acqua inspiegabilmente alta? Potrebbe essere una perdita occulta. Ecco come individuarla e perché chiamare subito un idraulico a Mandello del Lario.',
     content: `
@@ -72,7 +72,7 @@ const blogPosts: BlogPostType[] = [
   {
     slug: 'disostruzione-scarichi-fai-da-te-vs-professionista',
     title: 'Disostruzione Scarichi: Quando il Fai-da-Te Non Basta',
-    image: 'https://images.unsplash.com/photo-1628503845458-3393f9c646b1?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://raw.githubusercontent.com/ubosapp/IdraulicoMandelloDelLario/main/imgs/Scarico%20di%20un%20lavandino%20intasato%20con%20acqua%20stagnante.png',
     alt: 'Scarico di un lavandino intasato con acqua stagnante.',
     excerpt: 'Uno scarico lento è un problema comune, ma i rimedi casalinghi non sempre funzionano. Vediamo quando è il momento di chiamare un idraulico professionista a Mandello del Lario.',
     content: `
@@ -244,7 +244,7 @@ const About = () => (
     <div className="container">
       <h2 id="about-title">Professionisti al Vostro Servizio</h2>
       <div className="about-content">
-        <img src="https://as2.ftcdn.net/v2/jpg/02/76/95/92/1000_F_276959273_b0eZg90qO24aQv2AyIZw4q7n3M73A7tW.jpg" alt="Idraulico professionista che ripara un WC in un bagno moderno" />
+        <img src="https://raw.githubusercontent.com/ubosapp/IdraulicoMandelloDelLario/main/imgs/idraulico%20al%20lavoro.png" alt="Idraulico professionista al lavoro su una tubatura" />
         <div className="about-text">
           <h3>La tua tranquillità è la nostra priorità.</h3>
           <p>

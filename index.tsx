@@ -410,41 +410,37 @@ const Contact = ({ prefilledMessage, onPrivacyClick }) => {
     setStatus('sending');
 
     try {
-        const response = await fetch('/api/send-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: formState.name,
-                email: formState.email,
-                message: formState.message,
-            }),
-        });
-        
-        if (!response.ok) {
-            // Try to get error details from the body, but handle cases where it's not JSON
-            const contentType = response.headers.get("content-type");
-            let errorMessage = 'Si è verificato un errore nel server.';
-            if (contentType && contentType.indexOf("application/json") !== -1) {
-                const errorData = await response.json();
-                errorMessage = errorData.error || errorMessage;
-            } else {
-                const errorText = await response.text();
-                console.error("Server returned non-JSON error:", errorText);
-                errorMessage = 'Il server ha risposto con un errore. Controlla i log della funzione per i dettagli.';
-            }
-            throw new Error(errorMessage);
-        }
+      const response = await fetch('https://n8n-1-wj5q.onrender.com/webhook-test/mycontact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          message: formState.message,
+        }),
+      });
 
-        const data = await response.json();
-        console.log('SUCCESS!', data.message);
-        setStatus('success');
-        setFormState({ name: '', email: '', message: '' });
-        setConsent(false);
+      if (!response.ok) {
+        let errorMessage = 'Si è verificato un errore durante l\'invio al webhook.';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch (e) {
+          console.error("Could not parse error response as JSON.", await response.text());
+        }
+        throw new Error(errorMessage);
+      }
+
+      const data = await response.json();
+      console.log('SUCCESS!', data);
+      setStatus('success');
+      setFormState({ name: '', email: '', message: '' });
+      setConsent(false);
     } catch (err) {
-        console.log('FAILED...', err);
-        setStatus('error');
+      console.log('FAILED...', err);
+      setStatus('error');
     }
   };
 

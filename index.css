@@ -426,7 +426,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=2000&auto=format&fit=crop') no-repeat center center/cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://raw.githubusercontent.com/ubosapp/IdraulicoMandelloDelLario/main/imgs/IdraulicoMandelloDellario_ImmagineDiSfondo.jpg') no-repeat center center/cover;
   z-index: 1;
   animation: kenburns-effect 15s ease-out forwards;
 }

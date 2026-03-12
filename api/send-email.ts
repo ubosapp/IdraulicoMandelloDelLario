@@ -1,6 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-const TO_EMAIL = 'ubosapp.com@gmail.com';
 const FROM_EMAIL = 'info@idraulicomandellodellario.site';
 const FROM_NAME = 'Idraulico Mandello del Lario';
 
@@ -10,8 +9,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const apiKey = process.env.BREVO_API_KEY;
-  if (!apiKey) {
-    console.error('BREVO_API_KEY non configurata.');
+  const toEmail = process.env.TO_EMAIL;
+
+  if (!apiKey || !toEmail) {
+    console.error('Variabili d\'ambiente mancanti: BREVO_API_KEY e/o TO_EMAIL.');
     return res.status(500).json({ error: 'Configurazione server mancante.' });
   }
 
@@ -31,7 +32,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       },
       body: JSON.stringify({
         sender: { name: FROM_NAME, email: FROM_EMAIL },
-        to: [{ email: TO_EMAIL }],
+        to: [{ email: toEmail }],
         replyTo: { email: email, name: name },
         subject: `Nuovo messaggio da ${name} - idraulicomandellodelario.site`,
         htmlContent: `
